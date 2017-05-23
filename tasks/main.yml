@@ -1,0 +1,11 @@
+- selinux:
+    state: '{{ selinux_state }}'
+  register: selinux
+  notify: reboot
+
+- meta: flush_handlers
+
+- name: wait for reboot
+  pause:
+    seconds: '{{ selinux_pause_after_reboot }}'
+  when: selinux.changed

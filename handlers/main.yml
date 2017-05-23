@@ -1,0 +1,4 @@
+- name: reboot
+  async: 1
+  poll: 0
+  shell: sleep 2 && shutdown -r now "selinux changes require reboot"
